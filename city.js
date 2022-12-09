@@ -11,7 +11,7 @@ let objs = {
 }
 
 const unsplashKey = `umeDgXdnAgwbYZXM2kb1lloJOLMlUjcodGv-mTdjg8U`
-
+const strClassSelected = 'selected'
 
 objs.body = document.querySelector('body')
 objs.inputCity = document.querySelector('.searchBar input')
@@ -56,19 +56,35 @@ const updateBackgroundImage = function (url) {
     objs.body.style.background = `url('${url}') no-repeat center center fixed`
 }
 
+const setImageSelected = function (eleImage) {
+
+    let images = document.querySelectorAll('[data-index]')
+    images.forEach(ele => {
+        ele.className = ''
+    })
+    eleImage.className = strClassSelected
+}
+
 const createCarousel = function (arrImages) {
     objs.carousel.innerHTML = ''
     // to avoid hard code
     for (let i = 0; i < arrImages.length; i++) {
         let item = document.createElement('div')
-        item.className = 'imgContainer'
-
+        if (i === 0) {
+            item.className = strClassSelected
+        }
+        // item.className = 'imgContainer'
+        item.className = ''
         const img = arrImages[i].urls.regular
         item.style.background = `url(${img}) no-repeat center center fixed`
         item.dataset.index = i
         item.dataset.url = arrImages[i].urls.full
         objs.carousel.appendChild(item)
-        item.addEventListener('click', evt => updateBackgroundImage(evt.target.dataset.url))
+        item.addEventListener('click', evt => {
+            updateBackgroundImage(evt.target.dataset.url)
+            setImageSelected(evt.target)
+        })
+
         item.addEventListener('mouseenter', evt => {
             let newUrl = evt.target.dataset.url
             // replace the background image temporaryly
