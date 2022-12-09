@@ -51,6 +51,10 @@ const renderImages = function (arrImages) {
     createCarousel(arrImages)
 }
 
+const updateBackgroundImage = function (url) {
+    objs.body.style.background = `url('${url}') no-repeat center center fixed`
+}
+
 const createCarousel = function (arrImages) {
     objs.carousel.innerHTML = ''
     // to avoid hard code
@@ -61,8 +65,9 @@ const createCarousel = function (arrImages) {
         const img = arrImages[i].urls.regular
         item.style.background = `url(${img}) no-repeat center center fixed`
         item.dataset.index = i
+        item.dataset.url = arrImages[i].urls.full
         objs.carousel.appendChild(item)
-        item.addEventListener('click', evt => console.log('clicked...'))
+        item.addEventListener('click', evt => updateBackgroundImage(evt.target.dataset.url))
     }
 
 }

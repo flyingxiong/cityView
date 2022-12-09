@@ -2,6 +2,7 @@ body {
     /*since default html has a margin, we need to set it to zero*/
     margin: 0;
     background-size: cover;
+    transition: all ease-in-out 0.3s;
 
 }
 .searchBar {
