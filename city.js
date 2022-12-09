@@ -17,6 +17,17 @@ objs.inputCity = document.querySelector('.searchBar input')
 objs.btnSearch = document.querySelector('.searchBar button')
 objs.carousel = document.querySelector('.carousel')
 
+
+const setKeyEvent = function (){
+    objs.inputCity.addEventListener('keyup', function (evt){
+        if (evt.key === 'Enter' && objs.inputCity.value.trim().length) {
+            fetchData()
+        }
+    })
+
+    // todo: add more key event here
+}
+
 const fetchData = function () {
     const newCity = objs.inputCity.value.trim().toLowerCase() || 'macbook'
     fetch(`https://api.unsplash.com/search/photos?client_id=${unsplashKey}&query=${newCity}&orientation=landscape`)
@@ -41,6 +52,7 @@ const renderImages = function (arrImages) {
 }
 
 const createCarousel = function (arrImages) {
+    objs.carousel.innerHTML = ''
     // to avoid hard code
     for (let i = 0; i < arrImages.length; i++) {
         let item = document.createElement('div')
@@ -57,7 +69,6 @@ const createCarousel = function (arrImages) {
 
 fetchData()
 objs.btnSearch.addEventListener('click', fetchData) // if use fetchData(), the return value will be given to 'click'
-
 
 // where to get the fetch API address
 // background fixed meaning
