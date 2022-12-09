@@ -6,7 +6,8 @@ let objs = {
     body: null,
     inputCity: null,
     btnSearch: null,
-    carousel: null
+    carousel: null,
+    preUrl : null,
 }
 
 const unsplashKey = `umeDgXdnAgwbYZXM2kb1lloJOLMlUjcodGv-mTdjg8U`
@@ -68,6 +69,25 @@ const createCarousel = function (arrImages) {
         item.dataset.url = arrImages[i].urls.full
         objs.carousel.appendChild(item)
         item.addEventListener('click', evt => updateBackgroundImage(evt.target.dataset.url))
+        item.addEventListener('mouseenter', evt => {
+            let newUrl = evt.target.dataset.url
+            // replace the background image temporaryly
+            if (!objs.preUrl) {
+                let str = objs.body.style.background
+                let iStart = str.indexOf('"')
+                let iEnd = str.indexOf('"', iStart + 1)
+                str = str.slice(iStart + 1, iEnd)
+                objs.preUrl = str
+                updateBackgroundImage(newUrl)
+            }
+
+        })
+        item.addEventListener('mouseleave', evt => {
+            if (objs.preUrl) {
+                updateBackgroundImage(objs.preUrl)
+                objs.preUrl = null
+            }
+        })
     }
 
 }
