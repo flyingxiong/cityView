@@ -102,6 +102,13 @@ const setImageSelected = function (eleImage) {
     eleImage.className = strClassSelected
 }
 
+const respondMouseLeave = evt => {
+    if (objs.preUrl) {
+        updateBackgroundImage(objs.preUrl)
+        objs.preUrl = null
+    }
+}
+
 const createCarousel = function (arrImages) {
     objs.carousel.innerHTML = ''
     // to avoid hard code
@@ -124,6 +131,7 @@ const createCarousel = function (arrImages) {
             updateBackgroundImage(evt.target.dataset.url)
             console.log(evt.target.dataset.url)
             setImageSelected(evt.target)
+            item.removeEventListener('mouseleave', respondMouseLeave)
         })
 
         item.addEventListener('mouseenter', evt => {
@@ -137,14 +145,9 @@ const createCarousel = function (arrImages) {
                 objs.preUrl = str
                 updateBackgroundImage(newUrl)
             }
+            item.addEventListener('mouseleave', respondMouseLeave)
+        })
 
-        })
-        item.addEventListener('mouseleave', evt => {
-            if (objs.preUrl) {
-                updateBackgroundImage(objs.preUrl)
-                objs.preUrl = null
-            }
-        })
     }
 
 }
