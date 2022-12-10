@@ -8,6 +8,12 @@ let objs = {
     btnSearch: null,
     carousel: null,
     preUrl : null,
+    page: {
+        cursor: 1,
+        total: 1,
+    },
+    btnPrev: null,
+    btnNext: null,
 }
 
 const unsplashKey = `umeDgXdnAgwbYZXM2kb1lloJOLMlUjcodGv-mTdjg8U`
@@ -16,8 +22,9 @@ const strClassSelected = 'selected'
 objs.body = document.querySelector('body')
 objs.inputCity = document.querySelector('.searchBar input')
 objs.btnSearch = document.querySelector('.searchBar button')
-objs.carousel = document.querySelector('.carousel')
-
+objs.carousel = document.querySelector('.gallary')
+objs.btnPrev = document.querySelector('.btnNav.prev')
+objs.btnNext = document.querySelector('.btnNav.next')
 
 const setKeyEvent = function (){
     objs.inputCity.addEventListener('keyup', function (evt){
@@ -27,16 +34,46 @@ const setKeyEvent = function (){
     })
 
     // todo: add more key event here
+    objs.body.addEventListener('keyup', evt => {
+        if (evt.key === 'ArrowLeft') {
+            console.log('evt')
+            prevPage()
+        }
+        if (evt.key === 'ArrowRight') {
+            nextPage()
+        }
+    })
+
+    objs.btnPrev.addEventListener('click', prevPage)
+    objs.btnNext.addEventListener('click', nextPage)
+
+}
+
+const prevPage = function () {
+    if (objs.page.cursor > 1) {
+        objs.page.cursor--
+    }
+    fetchData()
+}
+
+const nextPage = function () {
+    if (objs.page.cursor < objs.page.total) {
+        objs.page.cursor ++
+    }
+    fetchData()
 }
 
 const fetchData = function () {
     const newCity = objs.inputCity.value.trim().toLowerCase() || 'macbook'
-    fetch(`https://api.unsplash.com/search/photos?client_id=${unsplashKey}&query=${newCity}&orientation=landscape`)
+    fetch(`https://api.unsplash.com/search/photos?client_id=${unsplashKey}&query=${newCity}&orientation=landscape&page=${objs.page.cursor}`)
         .then(response => response.json()) // equal to function (response) {return response.json()}
         .then(data => {
             //todo: render image carousel
             console.log('data raw', data)
             renderImages(data.results)
+            objs.page.total = data.total_pages
+
+
             // usually we need to check whether results was null
             createCarousel(data.results)
         })
@@ -78,6 +115,9 @@ const createCarousel = function (arrImages) {
         const img = arrImages[i].urls.regular
         item.style.background = `url(${img}) no-repeat center center fixed`
         item.dataset.index = i
+        item.style.animation = 'fadeIn 0.25s forwards'
+        item.style.animationDelay = `${0.1*i}s`
+
         item.dataset.url = arrImages[i].urls.full
         objs.carousel.appendChild(item)
         item.addEventListener('click', evt => {
@@ -109,6 +149,7 @@ const createCarousel = function (arrImages) {
 }
 
 fetchData()
+setKeyEvent()
 objs.btnSearch.addEventListener('click', fetchData) // if use fetchData(), the return value will be given to 'click'
 
 // where to get the fetch API address

@@ -27,25 +27,7 @@ body {
     transition: all ease-in-out 0.3s;
 }
 
-.carousel div {
-    margin: 0 5px;
-    width: 130px;
-    height: 95px;
-    border-radius: 10px;
-    background-size: cover;
-    border: 1px solid rgba(200, 200, 200, 0.3);
-    transition: all ease-in-out 0.3s;
-    opacity: 0.8
-}
 
-.carousel div:hover {
-    /* if delete the following line, pic will be covered by the right picture*/
-    z-index: 2;
-    transform: scale(1.2) translateY(-20px);
-    transition: all ease-in-out 0.3s;
-    opacity: 1;
-    cursor: pointer;
-}
 
 .carousel:hover {
     cursor: pointer;
@@ -107,4 +89,71 @@ body {
     opacity: 0.8;
     transform: scale(1.02);
     cursor: pointer;
+}
+
+.gallary {
+    display: flex;
+    flex-direction: row;
+}
+
+.gallary div {
+    margin: 0 5px;
+    width: 130px;
+    height: 95px;
+    border-radius: 10px;
+    background-size: cover;
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    transition: all ease-in-out 0.3s;
+    opacity: 0;
+}
+
+.gallary div:hover {
+    /* if delete the following line, pic will be covered by the right picture*/
+    z-index: 2;
+    transform: scale(1.2) translateY(-20px);
+    transition: all ease-in-out 0.3s;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnNav {
+    background-color: rgba(81, 81, 84, 0.4);
+    color: rgba(134, 134, 139, 0.9);
+    font-weight: 600;
+    font-size: 25px;
+    outline: none;
+    border: none;
+    transition: all ease 0.3s;
+    z-index: 2;
+}
+
+.btnNav:hover {
+    cursor: pointer;
+    background-color: rgba(210, 210, 215, 0.7);
+    transition: all ease 0.3s;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
