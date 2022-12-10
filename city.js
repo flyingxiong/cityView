@@ -109,9 +109,9 @@ const createCarousel = function (arrImages) {
         let item = document.createElement('div')
         if (i === 0) {
             item.className = strClassSelected
-        }
+        } else{item.className = ''}
         // item.className = 'imgContainer'
-        item.className = ''
+
         const img = arrImages[i].urls.regular
         item.style.background = `url(${img}) no-repeat center center fixed`
         item.dataset.index = i
@@ -122,6 +122,7 @@ const createCarousel = function (arrImages) {
         objs.carousel.appendChild(item)
         item.addEventListener('click', evt => {
             updateBackgroundImage(evt.target.dataset.url)
+            console.log(evt.target.dataset.url)
             setImageSelected(evt.target)
         })
 
