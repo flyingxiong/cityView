@@ -11,7 +11,26 @@ body {
     transform: translateX(-50%);
     top: 20%;
 }
+.gallary {
+    height: 10px;
+    width: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 700px;
+    margin: 0 10% 0 10%;
+}
 
+.btnNav {
+    position: absolute;
+    width: 100%;
+    /*bottom: 30%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    top: 45px;
+    display: flex;
+    justify-content: space-between;
+}
 
 .carousel {
     display: flex;
@@ -21,9 +40,9 @@ body {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
     position: absolute;
-    bottom: 30%;
-    left: 50%;
-    transform: translateX(-50%);
+    /*bottom: 30%;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
     transition: all ease-in-out 0.3s;
 }
 
@@ -44,7 +63,7 @@ body {
     transform: scale(1.2) translateY(-20px);
     transition: all ease-in-out 0.3s;
     opacity: 1;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 .carousel:hover {
