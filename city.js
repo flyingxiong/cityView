@@ -128,6 +128,7 @@ const createCarousel = function (arrImages) {
         item.dataset.url = arrImages[i].urls.full
         objs.carousel.appendChild(item)
         item.addEventListener('click', evt => {
+            objs.preUrl = evt.target.dataset.url
             updateBackgroundImage(evt.target.dataset.url)
             console.log(evt.target.dataset.url)
             setImageSelected(evt.target)
