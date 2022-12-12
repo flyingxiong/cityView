@@ -165,3 +165,7 @@ objs.btnSearch.addEventListener('click', fetchData) // if use fetchData(), the r
 // 3. display: none
 // 4. axis out of show; visiblity: credit
 // 5. div empty: width/height = 0
+
+
+// todo: fix the background bug
+// todo: fix the hover stand out bug when selected
