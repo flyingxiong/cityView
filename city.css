@@ -114,6 +114,7 @@ body {
     transition: all ease-in-out 0.3s;
     opacity: 1;
     cursor: pointer;
+    border: red solid 3px;
 }
 
 .nav {
@@ -157,3 +158,4 @@ body {
         transform: translateY(0);
     }
 }
+
