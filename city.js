@@ -15,6 +15,7 @@ let objs = {
     btnPrev: null,
     btnNext: null,
     searchBar: null,
+    web:null,
 }
 
 const unsplashKey = `umeDgXdnAgwbYZXM2kb1lloJOLMlUjcodGv-mTdjg8U`
@@ -28,6 +29,7 @@ objs.btnPrev = document.querySelector('.btnNav.prev')
 objs.btnNext = document.querySelector('.btnNav.next')
 objs.searchBar = document.querySelector('.searchBar')
 objs.carouselCon = document.querySelector('.carousel')
+objs.web = document
 
 let timer = setInterval(() => {
     objs.carouselCon.classList.add('static')
@@ -55,11 +57,11 @@ const setKeyEvent = function (){
     objs.btnPrev.addEventListener('click', prevPage)
     objs.btnNext.addEventListener('click', nextPage)
 
-    objs.body.addEventListener('mousemove', () => {
+    objs.web.addEventListener('mousemove', () => {
         console.log('move')
         objs.searchBar.classList.remove('static')
         objs.carouselCon.classList.remove('static')
-        clearInterval(t)
+        clearInterval(timer)
         timer = setInterval(() => {
             objs.carouselCon.classList.add('static')
             objs.searchBar.classList.add('static')
