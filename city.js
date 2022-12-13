@@ -26,6 +26,9 @@ objs.carousel = document.querySelector('.gallary')
 objs.btnPrev = document.querySelector('.btnNav.prev')
 objs.btnNext = document.querySelector('.btnNav.next')
 
+
+let t
+
 const setKeyEvent = function (){
     objs.inputCity.addEventListener('keyup', function (evt){
         if (evt.key === 'Enter' && objs.inputCity.value.trim().length) {
@@ -46,6 +49,14 @@ const setKeyEvent = function (){
 
     objs.btnPrev.addEventListener('click', prevPage)
     objs.btnNext.addEventListener('click', nextPage)
+
+    objs.body.addEventListener('mousemove', () => {
+        if (t) {
+            objs.body.classList.remove('static')
+            clearTimeout(t)
+        }
+        t = setTimeout(() => {objs.body.classList.add('static')}, 2000)
+    })
 
 }
 

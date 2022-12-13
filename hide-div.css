@@ -1,0 +1,10 @@
+body{
+    background-color: green;
+}
+.normal {
+    color: white;
+}
+.static {
+    display: none;
+    background-color: red
+}
