@@ -72,8 +72,6 @@ const fetchData = function () {
             console.log('data raw', data)
             renderImages(data.results)
             objs.page.total = data.total_pages
-
-
             // usually we need to check whether results was null
             createCarousel(data.results)
         })
@@ -122,7 +120,7 @@ const createCarousel = function (arrImages) {
         const img = arrImages[i].urls.regular
         item.style.background = `url(${img}) no-repeat center center fixed`
         item.dataset.index = i
-        item.style.animation = 'fadeIn 0.25s forwards'
+        item.style.animation = 'fadeIn 0.25s backwards'
         item.style.animationDelay = `${0.1*i}s`
 
         item.dataset.url = arrImages[i].urls.full

@@ -104,18 +104,18 @@ body {
     background-size: cover;
     border: 1px solid rgba(200, 200, 200, 0.3);
     transition: all ease-in-out 0.3s;
-    opacity: 0;
+    opacity: 1;
 }
 
 .gallary div:hover {
     /* if delete the following line, pic will be covered by the right picture*/
-    /*animation: none;*/
+    /*!*animation: none;*!*/
     z-index: 2;
     transform: scale(1.2) translateY(-20px);
     transition: all ease-in-out 0.3s;
     opacity: 1;
     cursor: pointer;
-    /*border: red solid 3px;*/
+    border: red solid 3px;
 }
 
 .nav {
@@ -147,7 +147,7 @@ body {
 
 @keyframes fadeIn {
     0% {
-        opacity: 0;
+        opacity: 1;
         transform: translateY(0);
     }
     50% {
@@ -156,7 +156,7 @@ body {
     }
     100% {
         opacity: 1;
-        /*transform: translateY(0);*/
+        transform: translateY(0);
     }
 }
 
