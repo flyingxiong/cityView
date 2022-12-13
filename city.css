@@ -5,6 +5,9 @@ body {
     transition: all ease-in-out 0.3s;
 
 }
+.static{
+    display: none;
+}
 .searchBar {
     position: absolute;
     left: 50%;
@@ -115,7 +118,7 @@ body {
     transition: all ease-in-out 0.3s;
     opacity: 1;
     cursor: pointer;
-    border: red solid 3px;
+    /*border: red solid 3px;*/
 }
 
 .nav {
