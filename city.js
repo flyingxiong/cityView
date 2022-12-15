@@ -66,7 +66,6 @@ const setKeyEvent = function (){
             objs.carouselCon.classList.add('static')
             objs.searchBar.classList.add('static')
         }, 3000)
-
     })
 
 }

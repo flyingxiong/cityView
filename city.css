@@ -9,7 +9,8 @@ div{
     transition: all ease-in-out 0.3s;
 }
 .static{
-    display: none !important;
+    opacity: 0;
+    transition: opacity ease-in-out 3s;
 }
 .searchBar {
     position: absolute;
